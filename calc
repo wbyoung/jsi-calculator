@@ -22,5 +22,14 @@ if (program.bbq) console.log('  - bbq');
 console.log('  - %s cheese', program.cheese);
 
 if (program.add) {
-  console.log('adding was requested');
+  // program.args is the stuff that remains after commander has parsed
+  // all of the options out of process.argv. for more info, see the
+  // _Option parsing_ section of commander's documentation.
+  var numbers = program.args;
+  var firstNumber = parseInt(numbers[0]);
+  var secondNumber = parseInt(numbers[1]);
+  var sum = firstNumber + secondNumber;
+  // %d means show me a digit. each %thing will look for the next argument
+  // after the string and use that to replace the %thing before logging.
+  console.log('the sum of %d and %d is %d', firstNumber, secondNumber, sum);
 }
